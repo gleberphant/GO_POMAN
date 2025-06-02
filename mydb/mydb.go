@@ -1,23 +1,22 @@
-package main
+package mydb
 
 import (
 	"database/sql"
 
-	_ "github.com/mattn/go-sqlite3"
-	//_ "github.com/marcboeker/go-duckdb/v2"
 	"fmt"
+
+	_ "github.com/mattn/go-sqlite3"
 )
 
 type MyDatabase struct {
 	con *sql.DB
 }
 
-func (db *MyDatabase) connectDatabase() error {
+func (db *MyDatabase) ConnectDatabase() error {
 
 	var err error
 
 	db.con, err = sql.Open("sqlite3", "file:database.sqlite")
-	//db.con, err = sql.Open("duckdb", "database.duckdb")
 
 	if err != nil {
 		fmt.Printf("Error ao abrir conexão %s", err.Error())
@@ -29,7 +28,7 @@ func (db *MyDatabase) connectDatabase() error {
 	return nil
 }
 
-func (db *MyDatabase) queryAllRequirements() (*sql.Rows, error) {
+func (db *MyDatabase) QueryAllRequirements() (*sql.Rows, error) {
 
 	rows, err := db.con.Query(`SELECT "id", "descricao" FROM "requisitos" `)
 
@@ -41,6 +40,6 @@ func (db *MyDatabase) queryAllRequirements() (*sql.Rows, error) {
 
 }
 
-func (db *MyDatabase) closeDatabase() {
+func (db *MyDatabase) CloseDatabase() {
 	db.con.Close()
 }

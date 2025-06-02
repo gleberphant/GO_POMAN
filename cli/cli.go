@@ -1,25 +1,26 @@
-package main
+package cli
 
 import (
 	"fmt"
 	"log"
+	"poman/mydb"
 )
 
-func cliApp() {
+func run_cli() {
 
 	fmt.Println("Bem Vindo ao POMAN-GO")
-	var connection MyDatabase
+	var connection mydb.MyDatabase
 
-	if err := connection.connectDatabase(); err != nil {
+	if err := connection.ConnectDatabase(); err != nil {
 		log.Fatal(err)
 		return
 	}
 
-	defer connection.closeDatabase()
+	defer connection.CloseDatabase()
 
 	fmt.Println("Consultando tabelas")
 
-	rows, _ := connection.queryAllRequirements()
+	rows, _ := connection.QueryAllRequirements()
 
 	defer rows.Close()
 
