@@ -1,3 +1,5 @@
+{{ define "layout" }}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,8 +12,32 @@
   <body>
 
     <header>template header</header>
+    <main>
+      
+    <table>
+      <thead>
+    <tr>
+      <th>id</th>
+      <th>descricao</th>
+      <th>Prioridade</th>
+      <th>menu</th>
+    </tr>
+</thead>
+<tbody>
+  {{ range .}}
+  <tr>
+    <td> id {{.Id}}</td>
+    <td > descricao {{.Descricao}}</td>
+    <td>    </td>
+    <td>    </td>
+  </tr>
+  {{ end}}
+</tbody>      
 
-    <main><script src="template/layout.jsx"></script></main>
+    </table>
+   
+
+    </main>
 
     <footer>template footer</footer>
 
@@ -19,3 +45,5 @@
     <script src="main.js"></script>
   </body>
 </html>
+
+{{ end}}

@@ -6,7 +6,7 @@ import (
 	"poman/mydb"
 )
 
-func run_cli() {
+func RunCli() {
 
 	fmt.Println("Bem Vindo ao POMAN-GO")
 	var connection mydb.MyDatabase

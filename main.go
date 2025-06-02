@@ -1,16 +1,16 @@
 package main
 
-//	"net/http"
-
-// func index(w http.ResponseWriter, r *http.Request) {
-// 	return
-// }
+import (
+	"fmt"
+	"net/http"
+	"poman/routes"
+)
 
 func main() {
 
-	cli.run_cli()
-	// 	http.HandleFunc("/", index)
+	routes.CarregarRotas()
 
-	// 	http.ListenAndServe(":8080", nil)
-	//
+	fmt.Println("Iniciando servidor")
+	http.ListenAndServe(":8080", nil)
+
 }

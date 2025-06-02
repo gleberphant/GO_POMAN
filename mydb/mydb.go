@@ -42,4 +42,5 @@ func (db *MyDatabase) QueryAllRequirements() (*sql.Rows, error) {
 
 func (db *MyDatabase) CloseDatabase() {
 	db.con.Close()
+	fmt.Println("Fechando a base de dados")
 }
